@@ -1,0 +1,5 @@
+SET(CFE_FS_SRC 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_fs_api.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_fs_decompress.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_fs_priv.c 
+	PARENT_SCOPE)

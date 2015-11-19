@@ -105,7 +105,8 @@ int32 LocateAndReadUserObject(void);
 /**
 *    Global Variables
 */
-char SrcFilename[OS_MAX_FILE_NAME+3]={""};
+#define HOST_OS_MAX_FILE_NAME 250
+char SrcFilename[HOST_OS_MAX_FILE_NAME+3]={""};
 char DstFilename[OS_MAX_FILE_NAME+3]={""};
 char TableName[38]={""};
 char Description[32]={""};
@@ -834,7 +835,7 @@ int32 ProcessCmdLineOptions(int ArgumentCount, char *Arguments[])
         }
         else if (!InputFileSpecified)
         {
-            strncpy(SrcFilename, Arguments[i], OS_MAX_FILE_NAME);
+            strncpy(SrcFilename, Arguments[i], HOST_OS_MAX_FILE_NAME);
             InputFileSpecified = TRUE;
         }
         else if (!OutputFileSpecified)

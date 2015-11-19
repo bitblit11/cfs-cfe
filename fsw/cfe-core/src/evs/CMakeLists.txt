@@ -1,0 +1,6 @@
+SET(CFE_EVS_SRC 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_evs_log.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_evs_task.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_evs_utils.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_evs.c 
+	PARENT_SCOPE)

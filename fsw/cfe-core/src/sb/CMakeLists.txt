@@ -1,0 +1,9 @@
+SET(CFE_SB_SRC 
+	${CMAKE_CURRENT_SOURCE_DIR}/ccsds.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_sb_api.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_sb_buf.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_sb_init.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_sb_priv.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_sb_task.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/cfe_sb_util.c 
+	PARENT_SCOPE)
