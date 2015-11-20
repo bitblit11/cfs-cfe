@@ -55,6 +55,7 @@
 #include "cfe_tbl_internal.h"
 #include "cfe_tbl_filedef.h"
 #include "osconfig.h"
+#include "common_types.h"
 
 #define MAX_SECTION_HDR_NAME_LEN   (128)
 #define TBL_DEF_SYMBOL_NAME "CFE_TBL_FileDef"
@@ -107,7 +108,7 @@ int32 LocateAndReadUserObject(void);
 */
 #define HOST_OS_MAX_FILE_NAME 250
 char SrcFilename[HOST_OS_MAX_FILE_NAME+3]={""};
-char DstFilename[OS_MAX_FILE_NAME+3]={""};
+char DstFilename[HOST_OS_MAX_FILE_NAME+3]={""};
 char TableName[38]={""};
 char Description[32]={""};
 char LineOfText[300]={""};
@@ -840,7 +841,7 @@ int32 ProcessCmdLineOptions(int ArgumentCount, char *Arguments[])
         }
         else if (!OutputFileSpecified)
         {
-            strncpy(DstFilename, Arguments[i], OS_MAX_FILE_NAME);
+            strncpy(DstFilename, Arguments[i], HOST_OS_MAX_FILE_NAME);
             OutputFileSpecified = TRUE;
         }
         else
@@ -969,10 +970,12 @@ int32 GetDstFilename(void)
 
     if (strlen(DstFilename) == 0)
     {
-        strcpy(DstFilename, "./");
+        strcpy(DstFilename, ".");
     }
     
+    strcat(DstFilename, "/");
     strcat(DstFilename, TblFileDef.TgtFilename);
+
     
     if (Verbose) printf("Target Filename: %s\n", DstFilename);
 
