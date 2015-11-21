@@ -38,6 +38,9 @@ set(CMAKE_C_ARCHIVE_FINISH)
 SET(CMAKE_CXX_ARCHIVE_CREATE "<CMAKE_AR> <OBJECTS> ${INSTALL_DIR}")
 SET(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> <OBJECTS> ${INSTALL_DIR}")
 
+# Generate documentation
+add_subdirectory($ENV{CFE_DIR}/docs docs)
+
 # Pass some variables up to the parent.
 set(COMPILE_FLAGS ${COMPILE_FLAGS} PARENT_SCOPE)
 set(LINK_FLAGS ${LINK_FLAGS} PARENT_SCOPE)
