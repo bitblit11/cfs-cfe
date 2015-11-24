@@ -130,8 +130,7 @@ int time_main(void)
     Test_CleanUpApp();
 
     /* Final report on number of errors */
-    UT_ReportFailures();
-    return 0;
+    return UT_ReportFailures();
 }
 
 /*

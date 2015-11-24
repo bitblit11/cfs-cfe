@@ -1,0 +1,34 @@
+SET(UTF_SRC 
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_es_api.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_es_cds.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_esmempool.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_evs.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_eeprom.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_memory.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_memrange.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_memutils.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_port.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_ram.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_psp_support.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_sb_api.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_sb.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_tbl_api.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_tbl_internal.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_time_api.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_cfe_time_utils.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_osapi.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_osfileapi.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_osfilesys.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_osloader.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_ostimer.c
+	${CMAKE_CURRENT_SOURCE_DIR}/src/utf_sim.c
+	$ENV{CFE_CORE_SRC}/es/cfe_es_cds_mempool.c
+	$ENV{CFE_CORE_SRC}/fs/cfe_fs_api.c
+	$ENV{CFE_CORE_SRC}/sb/ccsds.c
+	$ENV{CFE_CORE_SRC}/sb/cfe_sb_util.c
+	$ENV{CFE_PSP_SRC}/${PSP}/src/cfe_psp_timer.c
+	PARENT_SCOPE)
+	
+SET(UTF_INCS 
+	${CMAKE_CURRENT_SOURCE_DIR}/inc
+	PARENT_SCOPE)

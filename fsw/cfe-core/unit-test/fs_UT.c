@@ -64,8 +64,8 @@ int fs_main(void)
     Test_CFE_FS_Private();
     Test_CFE_FS_Decompress();
 
-    UT_ReportFailures();
-    return 0;
+    /* Final report on number of errors */
+    return UT_ReportFailures();
 }
 
 /*

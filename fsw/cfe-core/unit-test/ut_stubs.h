@@ -391,7 +391,7 @@ void UT_Report(boolean test, char *fun_name, char *info, char *test_num);
 ** \sa #UT_Text
 **
 ******************************************************************************/
-void UT_ReportFailures(void);
+int UT_ReportFailures(void);
 
 /*****************************************************************************/
 /**

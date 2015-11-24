@@ -98,7 +98,7 @@ char StartupScript[MAX_STARTUP_SCRIPT];
 ** Functions
 */
 #ifdef CFE_LINUX
-int main(void)
+int main(int argc, char *argv[])
 #else
 int es_main(void)
 #endif
@@ -106,6 +106,7 @@ int es_main(void)
     /* Set up the performance logging variable */
     Perf = (CFE_ES_PerfData_t *) &CFE_ES_ResetDataPtr->Perf;
     TestInit();
+
     TestStartupErrorPaths(); /* Done testing cfe_es_start.c */
     TestApps(); /* NOT done testing cfe_es_apps.c */
     TestERLog(); /* Done testing cfe_es_erlog.c */
@@ -121,8 +122,8 @@ int es_main(void)
     TestStaticApp();
 #endif
 
-    UT_ReportFailures();
-    return 0;
+    /* Final report on number of errors */
+    return UT_ReportFailures();
 }
 
 void TestInit(void)

@@ -76,8 +76,7 @@ int evs_main(void)
     Test_Misc();
 
     /* Final report on number of errors */
-    UT_ReportFailures();
-    return 0;
+    return UT_ReportFailures();
 }
 
 /*

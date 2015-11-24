@@ -41,6 +41,12 @@ SET(CMAKE_C_ARCHIVE_CREATE "<CMAKE_AR> <OBJECTS> ${INSTALL_DIR}")
 # Generate documentation
 add_subdirectory($ENV{CFE_DIR}/docs docs)
 
+# Build and run unit tests
+add_subdirectory($ENV{CFE_CORE_SRC}/../unit-test cfe-ut)
+
+# Collect UTF source code and header files required by the application unit tests.
+add_subdirectory($ENV{CFE_DIR}/tools/utf utf)
+
 # Pass some variables up to the parent.
 set(COMPILE_FLAGS ${COMPILE_FLAGS} PARENT_SCOPE)
 set(LINK_FLAGS ${LINK_FLAGS} PARENT_SCOPE)
@@ -55,3 +61,5 @@ SET(CMAKE_AR ${CMAKE_AR} PARENT_SCOPE)
 set(CMAKE_C_ARCHIVE_FINISH ${CMAKE_C_ARCHIVE_FINISH} PARENT_SCOPE)
 SET(CMAKE_CXX_ARCHIVE_CREATE ${CMAKE_CXX_ARCHIVE_CREATE} PARENT_SCOPE)
 SET(CMAKE_C_ARCHIVE_CREATE ${CMAKE_C_ARCHIVE_CREATE} PARENT_SCOPE)
+SET(UTF_SRC ${UTF_SRC} PARENT_SCOPE)
+SET(UTF_INCS ${UTF_INCS} PARENT_SCOPE)

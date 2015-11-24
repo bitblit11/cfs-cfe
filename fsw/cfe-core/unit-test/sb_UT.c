@@ -72,8 +72,8 @@ int sb_main(void)
     Test_SB_SpecialCases();
     UT_CheckForOpenSockets();
 
-    UT_ReportFailures();
-    return 0;
+    /* Final report on number of errors */
+    return UT_ReportFailures();
 } /* end main */
 
 /*

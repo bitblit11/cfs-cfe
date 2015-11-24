@@ -407,7 +407,7 @@ void UT_Report(boolean test, char *fun_name, char *info, char *test_num)
 /*
 ** Test pass/fail summary
 */
-void UT_ReportFailures(void)
+int UT_ReportFailures(void)
 {
     SNPRINTF(cMsg, UT_MAX_MESSAGE_LENGTH,
              "\n%s PASSED %d tests.", UT_appname, UT_passed);
@@ -424,6 +424,8 @@ void UT_ReportFailures(void)
     fflush(stdout);
     fclose(UT_logfile);
 #endif
+
+    return UT_failed;
 }
 
 /*
