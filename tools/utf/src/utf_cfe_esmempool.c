@@ -199,9 +199,9 @@ int32 CFE_ES_PoolCreate(CFE_ES_MemHandle_t  *HandlePtr,
 
    /* Handle Function Hook */
    if (UTF_ES_HookTable.CFE_ES_PoolCreate)
-      return(UTF_ES_HookTable.CFE_ES_PoolCreate(HandlePtr,*MemPtr, Size));
+      return(UTF_ES_HookTable.CFE_ES_PoolCreate(HandlePtr,(uint8*)*MemPtr, Size));
 
-    return CFE_ES_PoolCreateEx(HandlePtr, MemPtr, Size, CFE_ES_MAX_MEMPOOL_BLOCK_SIZES, &CFE_ES_MemPoolDefSize[0], CFE_ES_USE_MUTEX);
+    return CFE_ES_PoolCreateEx(HandlePtr, (uint8*)MemPtr, Size, CFE_ES_MAX_MEMPOOL_BLOCK_SIZES, &CFE_ES_MemPoolDefSize[0], CFE_ES_USE_MUTEX);
 }
 
 /*
@@ -219,7 +219,7 @@ int32 CFE_ES_PoolCreateNoSem(CFE_ES_MemHandle_t  *HandlePtr,
 
    /* Handle Function Hook */
    if (UTF_ES_HookTable.CFE_ES_PoolCreateNoSem)
-      return(UTF_ES_HookTable.CFE_ES_PoolCreateNoSem(HandlePtr,*MemPtr, Size));
+      return(UTF_ES_HookTable.CFE_ES_PoolCreateNoSem(HandlePtr,(uint8*)*MemPtr, Size));
 
     return CFE_ES_PoolCreateEx(HandlePtr, MemPtr, Size, CFE_ES_MAX_MEMPOOL_BLOCK_SIZES, &CFE_ES_MemPoolDefSize[0], CFE_ES_NO_MUTEX);
 }

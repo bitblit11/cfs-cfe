@@ -665,7 +665,7 @@ int32 OS_BinSemCreate (uint32 *sem_id, const char *sem_name, uint32 sem_initial_
     (void) options;            /* refer to function argument to avoid compiler warning */
 
     if (UTF_OSAPI_HookTable.OS_BinSemCreate)
-        return(UTF_OSAPI_HookTable.OS_BinSemCreate(sem_id,sem_name,sem_initial_value,options));
+        return(UTF_OSAPI_HookTable.OS_BinSemCreate((uint32)sem_id, (const char *)sem_name,sem_initial_value,options));
 
     /* Handle Preset Return Code */
     if (cfe_osapi_return_value[CFE_OSAPI_BINSEMCREATE_PROC] !=  UTF_CFE_USE_DEFAULT_RETURN_CODE)

@@ -7,15 +7,8 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CFE_INC_DIRS})
 
-#set(CFE_SRCA ${CFE_ES_SRC} ${CFE_EVS_SRC} ${CFE_FS_SRC} ${CFE_SB_SRC} ${CFE_TBL_SRC} ${CFE_TIME_SRC})
-
 add_definitions(-DCFE_LINUX)
-
-set(CMAKE_CXX_FLAGS "-g -O0 -Wall -W -Wshadow -Wunused-variable 
-	-Wunused-parameter -Wunused-function -Wunused -Wno-system-headers 
-	-Wno-deprecated -Woverloaded-virtual -Wwrite-strings -fprofile-arcs 
-	-ftest-coverage -m32")
-set(CMAKE_C_FLAGS "-g -O0 -Wall -W -fprofile-arcs -ftest-coverage -m32")
+set(CMAKE_C_FLAGS "-g -O0 -Wformat=0 -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -fprofile-arcs -ftest-coverage -m32")
 
 # Add the executables
 add_executable(es_UT 

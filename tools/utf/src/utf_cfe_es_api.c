@@ -1071,7 +1071,7 @@ int32 CFE_ES_GetAppName(char *AppName, uint32 AppId, uint32 BufferLength)
       {
          if ( ES_AppTable[AppId].RecordUsed == TRUE )
          {
-            strncpy(AppName, ES_AppTable[AppId].StartParams.Name, BufferLength);
+            strncpy(AppName, ES_AppTable[AppId].StartParams.Name, (size_t)BufferLength);
             Result = CFE_SUCCESS;
          }
          else
@@ -1293,7 +1293,8 @@ int32 CFE_ES_CreateChildTask(uint32 *TaskIdPtr, const char *TaskName,
 
    /* Handle Function Hook */
    if (UTF_ES_API_HookTable.CFE_ES_CreateChildTask)
-      return(UTF_ES_API_HookTable.CFE_ES_CreateChildTask(TaskIdPtr,TaskName,FunctionPtr,StackPtr,StackSize,Priority,Flags));
+      return(UTF_ES_API_HookTable.CFE_ES_CreateChildTask((uint32)TaskIdPtr,TaskName,FunctionPtr,StackPtr,StackSize,Priority,Flags));
+
 
    int32          Result;
    uint32         AppId= 0xFFFFFFFF;

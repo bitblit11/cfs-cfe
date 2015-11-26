@@ -11,3 +11,5 @@ set(ELF2CFETBL_INC
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../PSP/fsw/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../PSP/fsw/pc-linux/inc
     PARENT_SCOPE)
+
+set(COMPILE_FLAGS "${COMPILE_FLAGS} -Wformat=0" PARENT_SCOPE)
