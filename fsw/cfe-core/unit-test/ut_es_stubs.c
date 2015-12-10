@@ -417,9 +417,9 @@ int32 CFE_ES_WriteToSysLog(const char *pSpecString, ...)
         WriteSysLogRtn.value = EVS_SYSLOG_OFFSET + 1;
     }
     else if (strcmp(tmpString, "Unexpected size from CFE_PSP_GetResetArea: "
-                    "expected = 0x0001ff24, actual = 0x00000000\n") == 0 ||
+                    "expected = 0x00020324, actual = 0x00000000\n") == 0 ||
              strcmp(tmpString, "Unexpected size from CFE_PSP_GetResetArea: "
-                    "expected = 0x0001FF24, actual = 0x00000000\n") == 0)
+                    "expected = 0x00020324, actual = 0x00000000\n") == 0)
     {
         WriteSysLogRtn.value = EVS_SYSLOG_OFFSET + 2;
     }
