@@ -225,20 +225,26 @@ void UTF_SCRIPT_TIME_Use_Default_Api_Return_Code(int argc,char *argv[])
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 CFE_TIME_SysTime_t   CFE_TIME_GetTime(void)
 {
-    CFE_TIME_SysTime_t CurrentTime;
+//    CFE_TIME_SysTime_t CurrentTime;
+//
+//#if (CFE_TIME_CFG_DEFAULT_TAI == TRUE)
+//
+//    CurrentTime = CFE_TIME_GetTAI();
+//
+//#else
+//
+//    CurrentTime = CFE_TIME_GetUTC();
+//
+//#endif
+//
+//    return(CurrentTime);
 
-#if (CFE_TIME_CFG_DEFAULT_TAI == TRUE)
+	CFE_TIME_SysTime_t  Time;
 
-    CurrentTime = CFE_TIME_GetTAI();
+	Time.Seconds = 0;
+	Time.Subseconds = 0;
 
-#else
-
-    CurrentTime = CFE_TIME_GetUTC();
-
-#endif
-
-    return(CurrentTime);
-
+	return Time;
 } /* End of CFE_TIME_GetTime() */
 
 
