@@ -3957,7 +3957,7 @@ void TestCDSMempool(void)
 {
     uint32 MinCDSSize = CFE_ES_CDS_MIN_BLOCK_SIZE +
                         sizeof(CFE_ES_CDSBlockDesc_t);
-    CFE_ES_CDSBlockHandle_t BlockHandle;
+    CFE_ES_CDSBlockHandle_t BlockHandle = 0;
     int Data;
 
     extern uint32 CFE_ES_CDSMemPoolDefSize[];

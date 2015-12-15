@@ -1179,9 +1179,9 @@ void CFE_ES_ProcessControlRequest(uint32 AppID)
 */
 int32 CFE_ES_CleanUpApp(uint32 AppId)
 {
-   uint32    i;
-   int32  Status;
-   uint32 MainTaskId;
+   uint32    i = 0;
+   int32  Status = CFE_SUCCESS;
+   uint32 MainTaskId = 0;
    int32  ReturnCode = CFE_SUCCESS;
 
    #ifdef ES_APP_DEBUG
@@ -1299,7 +1299,7 @@ int32 CFE_ES_CleanUpApp(uint32 AppId)
 int32 CFE_ES_CleanupTaskResources(uint32 TaskId)
 {
     OS_queue_prop_t         QueueProp;
-    OS_timer_prop_t         TimerProp;
+    OS_timer_prop_t         TimerProp = {};
     OS_bin_sem_prop_t       SemProp;
     OS_count_sem_prop_t     CountSemProp;
     OS_mut_sem_prop_t       MutProp;
