@@ -1067,6 +1067,8 @@ int32 CFE_ES_GetAppName(char *AppName, uint32 AppId, uint32 BufferLength)
 
    if ( AppName != NULL )
    {
+	  AppName[0] = 0;
+
       if ( AppId < CFE_ES_MAX_APPLICATIONS )
       {
          if ( ES_AppTable[AppId].RecordUsed == TRUE )
