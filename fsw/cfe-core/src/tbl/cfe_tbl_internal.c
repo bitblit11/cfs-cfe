@@ -983,10 +983,13 @@ int32 CFE_TBL_GetWorkingBuffer(CFE_TBL_LoadBuff_t **WorkingBufferPtr,
 
             if ((*WorkingBufferPtr) != NULL)
             {
-                /* In case the file contains a partial table load, get the active buffer contents first */
-                CFE_PSP_MemCpy((*WorkingBufferPtr)->BufferPtr,
+            	if(((*WorkingBufferPtr)->BufferPtr) != (RegRecPtr->Buffers[RegRecPtr->ActiveBufferIndex].BufferPtr))
+            	{
+            		/* In case the file contains a partial table load, get the active buffer contents first */
+            		CFE_PSP_MemCpy((*WorkingBufferPtr)->BufferPtr,
                           RegRecPtr->Buffers[RegRecPtr->ActiveBufferIndex].BufferPtr,
                           RegRecPtr->Size);
+            	}
             }
         }
     }
@@ -1166,9 +1169,12 @@ int32 CFE_TBL_UpdateInternal( CFE_TBL_Handle_t TblHandle,
             else
             {
                 /* To update a single buffered table requires a memcpy from working buffer */
-                CFE_PSP_MemCpy(RegRecPtr->Buffers[0].BufferPtr,
+            	if((RegRecPtr->Buffers[0].BufferPtr) != (CFE_TBL_TaskData.LoadBuffs[RegRecPtr->LoadInProgress].BufferPtr))
+            	{
+            		CFE_PSP_MemCpy(RegRecPtr->Buffers[0].BufferPtr,
                           CFE_TBL_TaskData.LoadBuffs[RegRecPtr->LoadInProgress].BufferPtr,
                           RegRecPtr->Size);
+            	}
 
                 /* Save source description with active buffer */
                 strncpy(RegRecPtr->Buffers[0].DataSource,

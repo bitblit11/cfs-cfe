@@ -1651,13 +1651,11 @@ void Test_CFE_TBL_LoadCmd(void)
 void Test_CFE_TBL_HousekeepingCmd(void)
 {
     int                   i;
-    CFE_TBL_LoadBuff_t    DumpBuff;
-    CFE_TBL_LoadBuff_t    *DumpBuffPtr = &DumpBuff;
-    CFE_TBL_RegistryRec_t RegRecPtr;
+    CFE_TBL_LoadBuff_t    DumpBuff = {};
+    CFE_TBL_RegistryRec_t RegRecPtr = {};
     CFE_TBL_DumpControl_t DumpControl = CFE_TBL_TaskData.DumpControlBlocks[0];
     uint8                 Buff;
-    uint8                 *BuffPtr = &Buff;
-    char                  DataSrc[OS_MAX_PATH_LEN];
+    char                  DataSrc[OS_MAX_PATH_LEN] = {};
     uint32                Secs = 0;
     uint32                SubSecs = 0;
     int32                 LoadInProg = 0;
@@ -1678,14 +1676,14 @@ void Test_CFE_TBL_HousekeepingCmd(void)
     LoadInProg = CFE_TBL_NO_LOAD_IN_PROGRESS + 1;
     RegRecPtr.LoadInProgress = LoadInProg;
     CFE_TBL_TaskData.DumpControlBlocks[0].RegRecPtr = &RegRecPtr;
-    DumpBuffPtr->Taken = TRUE;
-    DumpBuffPtr->Validated = TRUE;
-    DumpBuffPtr->BufferPtr = BuffPtr;
-    DumpBuffPtr->FileCreateTimeSecs = Secs;
-    DumpBuffPtr->FileCreateTimeSubSecs = SubSecs;
-    strncpy(DumpBuffPtr->DataSource, DataSrc, OS_MAX_PATH_LEN);
-    DumpBuffPtr->DataSource[OS_MAX_PATH_LEN - 1] = '\0';
-    CFE_TBL_TaskData.DumpControlBlocks[0].DumpBufferPtr = DumpBuffPtr;
+    DumpBuff.Taken = TRUE;
+    DumpBuff.Validated = TRUE;
+    DumpBuff.BufferPtr = &Buff;
+    DumpBuff.FileCreateTimeSecs = Secs;
+    DumpBuff.FileCreateTimeSubSecs = SubSecs;
+    strncpy(DumpBuff.DataSource, DataSrc, OS_MAX_PATH_LEN);
+    DumpBuff.DataSource[OS_MAX_PATH_LEN - 1] = '\0';
+    CFE_TBL_TaskData.DumpControlBlocks[0].DumpBufferPtr = &DumpBuff;
     CFE_TBL_TaskData.DumpControlBlocks[0].State = CFE_TBL_DUMP_PERFORMED;
 
     for (i = 1; i < CFE_TBL_MAX_SIMULTANEOUS_LOADS; i++)
