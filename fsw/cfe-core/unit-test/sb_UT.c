@@ -5959,8 +5959,7 @@ void Test_SendMsg_SendWithMetadata(void)
 {
     CFE_SB_PipeId_t   PipeId;
     CFE_SB_MsgId_t    MsgId = 0x0809;
-    SB_UT_Test_Tlm_t  TlmPkt;
-    CFE_SB_MsgPtr_t   TlmPktPtr = (CFE_SB_MsgPtr_t) &TlmPkt;
+    SB_UT_Test_Tlm_t  TlmPkt = {};
     CFE_SB_SenderId_t Sender;
     int32             PipeDepth;
     int32             ExpRtn;
@@ -5979,8 +5978,8 @@ void Test_SendMsg_SendWithMetadata(void)
     CFE_SB_CreatePipe(&PipeId, PipeDepth, "TestPipe");
     CFE_SB_Subscribe(MsgId, PipeId);
     CFE_SB_InitMsg(&TlmPkt, MsgId, sizeof(SB_UT_Test_Tlm_t), TRUE);
-    ActRtn = CFE_SB_SendMsgFull(TlmPktPtr, CFE_SB_DO_NOT_INCREMENT,
-                                CFE_SB_SEND_ZEROCOPY);
+    ActRtn = CFE_SB_SendMsgFull(&TlmPkt, CFE_SB_DO_NOT_INCREMENT,
+    		CFE_SB_SEND_ONECOPY);
 /*                                CFE_SB_SEND_ZEROCOPY, &Sender); */
     ExpRtn = CFE_SUCCESS;
 
