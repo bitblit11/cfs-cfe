@@ -4,6 +4,8 @@ set( MEMORYCHECK_COMMAND_OPTIONS "--trace-children=yes --leak-check=full" )
 
 # Set include directories
 include_directories(
+    $ENV{CFE_DIR}/fsw/platform_inc/cpu1
+    $ENV{CFE_DIR}/fsw/mission_inc
 	${CMAKE_CURRENT_SOURCE_DIR}
 	${CFE_INC_DIRS})
 
