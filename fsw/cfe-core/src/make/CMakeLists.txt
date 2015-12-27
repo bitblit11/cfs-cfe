@@ -16,6 +16,10 @@ set(CFE_INC_DIRS
 	${CMAKE_CURRENT_SOURCE_DIR}/../sb
 	${CMAKE_CURRENT_SOURCE_DIR}/../tbl
 	${CMAKE_CURRENT_SOURCE_DIR}/../time)
+
+# Add CMake files from OSAL and PSP
+add_subdirectory($ENV{OSAL_SRC}/${OS} osal)
+add_subdirectory($ENV{CFE_PSP_SRC}/${PSP}/make psp)
 	
 add_subdirectory(../es es)
 add_subdirectory(../evs evs)
@@ -25,10 +29,6 @@ add_subdirectory(../tbl tbl)
 add_subdirectory(../time time)
 
 set(CFE_SRC ${CFE_ES_SRC} ${CFE_EVS_SRC} ${CFE_FS_SRC} ${CFE_SB_SRC} ${CFE_TBL_SRC} ${CFE_TIME_SRC})
-
-# Add CMake files from OSAL and PSP
-add_subdirectory($ENV{OSAL_SRC}/${OS} osal)
-add_subdirectory($ENV{CFE_PSP_SRC}/${PSP}/make psp)
 
 # Add global include directories.
 include_directories(${CFE_INC_DIRS})
@@ -63,3 +63,7 @@ set(CMAKE_CXX_COMPILER ${CMAKE_CXX_COMPILER} PARENT_SCOPE)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} PARENT_SCOPE)
 SET(UTF_SRC ${UTF_SRC} PARENT_SCOPE)
 SET(UTF_INCS ${UTF_INCS} PARENT_SCOPE)
+set(COMPILE_FLAGS ${COMPILE_FLAGS} PARENT_SCOPE)
+set(LINK_FLAGS ${LINK_FLAGS} PARENT_SCOPE)
+set(CMAKE_SYSTEM_NAME ${CMAKE_SYSTEM_NAME} PARENT_SCOPE)
+
